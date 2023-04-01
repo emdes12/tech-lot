@@ -29,6 +29,12 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: auto;
+  max-width: 2000px;
+  width: 100%;
+}
+
 button {
   border: none;
   display: flex;

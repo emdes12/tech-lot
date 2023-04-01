@@ -3,6 +3,14 @@ a {
   color: var(--white-color);
 }
 
-.btn-link-primary {
+.btn-link-blue {
+  padding: 12px 8px;
   color: white;
+  background-color: var(--blue-dark-color);
+}
+
+.btn-link-wine {
+  padding: 12px 8px;
+  color: white;
+  background-color: var(--wine-color);
 }

@@ -4,3 +4,48 @@
 @import url(../styles/components/header.css);
 
 /* other styling */
+.main-cta {
+  margin: auto;
+  max-width: 2000px;
+  width: 100%;
+  padding: 200px 80px 100px;
+  background-image: url(../images/codioful-formerly-gradienta-bKESVqfxass-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--white-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.main-cta h1 {
+  font-size: 45px;
+  letter-spacing: 8px;
+}
+
+.about-company {
+  padding: 50px 20px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.about-company h3 {
+  font-size: 30px;
+  letter-spacing: 5px;
+  color: var(--wine-color);
+}
+
+.about-company p {
+  max-width: 800px;
+  width: 100%;
+  text-align: justify;
+  font-size: 18px;
+  color: rgb(99, 99, 99);
+  font-weight: 300;
+  line-height: 25px;
+}
