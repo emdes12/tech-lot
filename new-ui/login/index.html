@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech-lot</title>
+    <link rel="stylesheet" href="./login.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="logo">
+      <a href="/index.html">TechLot</a>
+    </div>
+
+    <section>
+      <img src="/login/images/tech-setting.png" alt="" />
+      <div class="div">
+        <h3>Welcome to our Community</h3>
+        <p>Login/Signup and gain acess to more features</p>
+      </div>
+    </section>
+    <main>
+      <div class="form-container">
+        <div class="form-head" id="switchBtn">
+          <div class="form-h active" id="login-btn">Log in</div>
+          <div class="form-h" id="reg-btn">Sign up</div>
+          <span class="bottom-line"></span>
+        </div>
+        <form action="#" class="login-form">
+          <input
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            id="email"
+          />
+          <input
+            type="password"
+            placeholder="Your Password"
+            name="password"
+            id="password"
+          />
+          <button type="submit">Login</button>
+          <a class="forget-password" href="#">Forgot Password?</a>
+        </form>
+
+        <form action="#" class="reg-form">
+          <input
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            id="regEmail"
+          />
+
+          <input
+            type="password"
+            placeholder="Your Password"
+            name="password"
+            id="regPassword"
+          />
+
+          <input type="password" placeholder="Confirm Password" />
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="./auth.js"></script>
+  </body>
+</html>

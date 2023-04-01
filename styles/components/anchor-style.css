@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.btn-link-primary {
+  color: white;
+}
