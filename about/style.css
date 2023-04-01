@@ -34,13 +34,18 @@
   flex-direction: column;
 }
 
-.about-company h3 {
+.about-text {
+  text-align: center;
+}
+
+.about-text h3 {
   font-size: 30px;
+  margin-bottom: 30px;
   letter-spacing: 5px;
   color: var(--wine-color);
 }
 
-.about-company p {
+.about-text p {
   max-width: 800px;
   width: 100%;
   text-align: justify;
