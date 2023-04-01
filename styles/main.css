@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;800;900&display=swap");
+
 /* variables */
 
 :root {
@@ -6,7 +8,9 @@
   --white-color: #fff;
   --blue-color: #003399;
   --blue-dark-color: #0a1847;
+  --blue-dark-2-color: #0a184791;
   --wine-color: #990000;
+  --wine-2-color: #99000091;
   --body-padding: 50px;
   --fs-bigger: calc(12 * 4.1px);
   --fs-big: calc(9 * 4.1px);

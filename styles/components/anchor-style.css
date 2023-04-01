@@ -4,13 +4,23 @@ a {
 }
 
 .btn-link-blue {
-  padding: 12px 8px;
+  padding: 12px 18px;
+  font-weight: 500;
   color: white;
   background-color: var(--blue-dark-color);
 }
 
 .btn-link-wine {
-  padding: 12px 8px;
+  padding: 12px 18px;
   color: white;
+  font-weight: 500;
   background-color: var(--wine-color);
+}
+
+.btn-link-blue:hover {
+  background-color: var(--blue-dark-2-color);
+}
+
+.btn-link-wine:hover {
+  background-color: var(--wine-2-color);
 }
