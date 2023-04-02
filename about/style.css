@@ -13,6 +13,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   color: var(--white-color);
   display: flex;
   align-items: flex-start;
@@ -91,4 +92,110 @@
   border-radius: 4px;
   color: var(--white-color);
   font-weight: 300;
+}
+
+.mission-vision {
+  max-width: 2000px;
+  width: 100%;
+  margin: auto;
+  height: 410px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mission,
+.vision {
+  display: flex;
+  padding: 0 80px;
+  gap: 60px;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row-reverse;
+  background-image: url(../images/aron-visuals-bZZp1PmHI0E-unsplash.jpg);
+  transition: transform ease 1s;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.vision {
+  background-image: url(../images/nasa-Q1p7bh3SHj8-unsplash.jpg);
+  flex-direction: row;
+  justify-content: end;
+}
+
+.mission-text,
+.vision-text {
+  color: var(--white-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(1px);
+  padding: 30px;
+}
+
+.mission img,
+.vision img {
+  width: 270px;
+  height: 410px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.mission-text h3,
+.vision-text h3 {
+  font-size: 30px;
+  letter-spacing: 3px;
+  padding-bottom: 35px;
+}
+
+.mission-text p,
+.vision-text p {
+  font-size: 18px;
+  font-weight: 200;
+  max-width: 600px;
+  width: 100%;
+  line-height: 25px;
+  padding-bottom: 35px;
+}
+
+.indicators {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.circle-indicator {
+  width: 10px;
+  transition: all ease 1s;
+  cursor: pointer;
+  height: 10px;
+  border-radius: 100%;
+  border: 2px solid var(--white-color);
+}
+
+.mission-vision.active .indicator2 {
+  background-color: var(--white-color);
+}
+
+.mission-vision.active .indicator1 {
+  background-color: transparent;
+}
+
+.indicator1 {
+  background-color: var(--white-color);
+}
+
+.mission-vision.active .mission {
+  transform: translateY(-410px);
+}
+
+.mission-vision.active .vision {
+  transform: translateY(-410px);
 }
