@@ -324,3 +324,52 @@ span.post {
 }
 
 /* our teams ends here */
+
+@media (max-width: 650px) {
+  .mission-vision {
+    height: 700px;
+  }
+
+  .mission,
+  .vision {
+    flex-direction: column-reverse;
+    padding: 50px;
+    height: 700px;
+  }
+
+  .vision {
+    flex-direction: column-reverse;
+  }
+
+  .mission-text,
+  .vision-text {
+    padding: 22px;
+  }
+
+  .mission img,
+  .vision img {
+    max-width: 450px;
+    width: 100%;
+    height: 300px;
+    filter: grayscale(100%);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .mission-text p,
+  .vision-text p {
+    font-size: 12px;
+  }
+
+  .indicators {
+    left: 30px;
+  }
+
+  .mission-vision.active .mission {
+    transform: translateY(-700px);
+  }
+
+  .mission-vision.active .vision {
+    transform: translateY(-700px);
+  }
+}
