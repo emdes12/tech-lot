@@ -303,20 +303,23 @@
 
 span.post {
   font-weight: 200;
+  font-size: 12px;
 }
 
 .team-contact {
   display: grid;
   justify-content: space-between;
-  grid-template-columns: 1fr 20px;
+  grid-template-columns: 1fr 30px;
+  align-items: center;
   padding: 9px 0 0;
   font-weight: 200;
-  color: var(--wine-2-color);
+  font-size: 14px;
+  color: var(--white-color);
 }
 
 .team-contact img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   filter: contrast(30%);
 }
 
