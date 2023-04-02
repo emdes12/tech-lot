@@ -5,7 +5,7 @@ const parentEl = document.querySelector(".mission-vision");
 function swithchBtwnMissionVision() {
   setInterval(() => {
     parentEl.classList.toggle("active");
-  }, 3000);
+  }, 7000);
 }
 
 swithchBtwnMissionVision();
