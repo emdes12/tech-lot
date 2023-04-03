@@ -2,11 +2,12 @@
 @import url(./components/anchor-style.css);
 @import url(./components/footer.css);
 @import url(./components/header.css);
+@import url(./components/contact.css);
 
 /* other styling */
 .main {
   width: 100%;
-  background-image: url(../images/bgimage.jpeg);
+  background-image: url(../images/nasa-Q1p7bh3SHj8-unsplash.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -14,7 +15,8 @@
 }
 
 .actions {
-  background-image: linear-gradient(90deg, #0a1847d8 20%, rgba(0, 0, 0, 0));
+  /* background-image: linear-gradient(90deg, #0a1847d8 20%, rgba(0, 0, 0, 0)); */
+  background: #040c27b2;
   color: var(--white-color);
   padding: var(--body-padding);
   /* background-color: #00; */
@@ -38,7 +40,7 @@
 
 .img-stamp {
   position: absolute;
-  width: 250px;
+  width: 100px;
   bottom: 40px;
   opacity: 49%;
   right: 50px;
@@ -145,208 +147,6 @@
 .show .show-icon {
   display: none;
 }
-
-/* service request form */
-
-.contact {
-  width: 100%;
-  padding: 150px 0 var(--body-padding);
-  content: "";
-  position: relative;
-  display: grid;
-  place-items: center;
-}
-
-.contact::after {
-  background-color: var(--blue-dark-color);
-  width: 50%;
-  position: absolute;
-  content: "";
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.submit {
-  display: flex;
-  justify-content: end;
-}
-
-.form-container {
-  max-width: 700px;
-  width: 100%;
-  background-image: url("../images/bgimage.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
-
-.bg-image {
-  width: 100%;
-  padding: 35px var(--body-padding);
-  background-color: rgba(0, 51, 153, 0.7);
-  height: 100%;
-  top: 0;
-  right: 0px;
-}
-
-.form-container h1,
-.form-container p {
-  text-align: center;
-  color: var(--white-color);
-}
-
-.form-container h1 {
-  font-size: var(--fs-big);
-  margin-bottom: 15px;
-}
-
-.form-container p {
-  font-size: var(--fs-small);
-  font-weight: 200;
-  margin-bottom: 35px;
-}
-
-.bg-image form {
-  display: grid;
-  color: var(--white-color);
-  align-items: center;
-  gap: 20px;
-  grid-template-columns: 1fr 1fr;
-}
-
-/* float label in input start */
-
-select {
-  border: none;
-  background: linear-gradient(90deg, var(--blue-dark-color), var(--blue-color));
-  padding: 19px 0 13px;
-  font-size: 13px;
-  border-radius: 3px;
-}
-
-input {
-  color: var(--white-color);
-}
-
-.float-container {
-  background: linear-gradient(90deg, var(--blue-dark-color), var(--blue-color));
-  padding: 0 8px;
-  font-size: 13px;
-  margin: 5px;
-  border-radius: 3px;
-  position: relative;
-}
-
-.float-container input,
-.float-container textarea {
-  border: none;
-  font-size: 13px;
-  margin: 19px 0 13px;
-  width: 100%;
-  font-family: inherit;
-  outline: 0;
-  background: none;
-  color: white;
-}
-
-.in-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.float-container input::placeholder,
-.float-container textarea::placeholder,
-select::placeholder {
-  color: rgb(148, 149, 241);
-}
-
-label {
-  font-size: 13px;
-  position: absolute;
-  transform-origin: top left;
-  color: white;
-  font-family: inherit;
-  transform: translate(0, 16px) scale(1);
-  transition: all 0.1s ease-in-out;
-}
-
-.float-container.active label {
-  transform: translate(0, 4px) scale(0.75);
-}
-
-/* floating label in input end */
-
-/* select */
-
-.custom-select {
-  position: relative;
-}
-
-.custom-select select {
-  display: none; /*hide original SELECT element: */
-}
-
-.select-selected {
-  background-image: linear-gradient(
-    90deg,
-    var(--blue-dark-color),
-    var(--blue-color)
-  );
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 25px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 18px;
-}
-
-/* style the items (options), including the selected item: */
-.select-items div,
-.select-selected {
-  color: #ffffff;
-  padding: 19px 5px 13px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: var(--blue-color);
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* select end */
 
 @media (max-width: 650px) {
   body {
