@@ -233,3 +233,7 @@ form {
 .search input:focus-visible {
   all: none;
 }
+
+form.search {
+  width: 300px;
+}
