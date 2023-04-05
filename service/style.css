@@ -2,6 +2,7 @@
 @import url(../styles/components/anchor-style.css);
 @import url(../styles/components/footer.css);
 @import url(../styles/components/header.css);
+@import url(../styles/components/contact.css);
 
 /* other styling */
 .main-cta {
@@ -9,13 +10,15 @@
   max-width: 2000px;
   width: 100%;
   padding: 200px 80px 100px;
-  background-image: url(../images/codioful-formerly-gradienta-bKESVqfxass-unsplash.jpg);
+  background-image: url(../images/nasa-Q1p7bh3SHj8-unsplash.jpg);
   background-position: center;
   background-repeat: no-repeat;
+  text-shadow: 2px 2px 5px #000;
+  background-attachment: fixed;
   background-size: cover;
   color: var(--white-color);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   flex-direction: column;
 }

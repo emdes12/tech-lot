@@ -210,3 +210,26 @@ label {
 }
 
 /* select end */
+
+/* search input and button */
+form {
+  background-color: #fff;
+  border: 1px solid var(--black-color);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  font-size: 16px;
+  font-family: "Inter";
+  place-items: center;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.search input {
+  border: none;
+  padding: 8px;
+}
+
+.search input:focus-visible {
+  all: none;
+}

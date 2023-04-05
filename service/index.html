@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact - Tech-lot</title>
+    <title>Services - Tech-lot</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -24,24 +24,18 @@
           <a href="../about">
             <li class="link">About</li>
           </a>
-          <a href="../service">
-            <li class="link">Services</li>
+          <a href="/">
+            <li class="link active">Services</li>
           </a>
-          <a href="#">
-            <li class="link active">Contact</li>
+          <a href="#contact">
+            <li class="link">Contact</li>
           </a>
         </ul>
-        <button
-          style="--outline-color: var(--white-color)"
-          class="outline-button mb-none"
-        >
-          Login
-        </button>
         <button
           style="--bg-color: var(--black-color)"
           class="mb-none primary-button"
         >
-          Sign up
+          Search
         </button>
         <div class="mobile-menu-icon">
           <img class="icon-white" src="/images/menu-icon-1.svg" alt="icon" />
@@ -57,29 +51,27 @@
         <a href="../about">
           <li class="link-mobile">About</li>
         </a>
-        <a href="../service">
-          <li class="link-mobile">Services</li>
+        <a href="/">
+          <li class="link-mobile active">Services</li>
         </a>
-        <a href="#">
-          <li class="link-mobile active">Contact</li>
+        <a href="#contact">
+          <li class="link-mobile">Contact</li>
         </a>
       </ul>
       <div class="buttons">
-        <button
-          style="--outline-color: var(--black-color)"
-          class="outline-button"
-        >
-          Login
-        </button>
         <button style="--bg-color: var(--black-color)" class="primary-button">
-          Sign up
+          Search
         </button>
       </div>
     </div>
 
     <section class="main-cta">
-      <h1>Contact Us</h1>
-      <a href="../about" class="btn-link-wine">About</a>
+      <h1>Our Services</h1>
+
+      <form action="#" class="search">
+        <input type="text" placeholder="Search" />
+        <img src="../images/search-icon.svg" alt="search-icon" />
+      </form>
     </section>
 
     <div class="about-company">
@@ -112,7 +104,90 @@
       </div>
     </div>
 
-    <script src="../header.js"></script>
+    <div class="contact" id="contact">
+      <div class="form-container">
+        <div class="bg-image">
+          <h1>Get in Touch with us</h1>
+          <p>where you will find the same quaility of service and dedication</p>
+
+          <form action="https://formspree.io/f/xoqzqlrl" method="post">
+            <div class="custom-select">
+              <select name="services">
+                <option value="">* Select Services</option>
+                <option value="Technology Soloutions">
+                  Technology Solutions
+                </option>
+                <option value="Embedded Expertise">Embedded Expertise</option>
+                <option value="Corporate Training">Corporate Training</option>
+                <option value="Client Experience">Client Experience</option>
+                <option value="">ATM Service</option>
+              </select>
+            </div>
+
+            <div class="float-container">
+              <input
+                type="text"
+                name="name"
+                required
+                id="name"
+                placeholder="Your Name Here"
+              />
+            </div>
+
+            <div class="in-form">
+              <div class="float-container">
+                <input
+                  type="number"
+                  name="Phone Number"
+                  id="phone"
+                  required
+                  placeholder="* Phone Number"
+                />
+              </div>
+
+              <div class="float-container">
+                <input
+                  type="email"
+                  name="Email"
+                  id="email"
+                  placeholder="* Email Address:"
+                  required
+                />
+              </div>
+
+              <div class="float-container">
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Your Company Name: (ignore if it individual)"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="float-container">
+              <textarea
+                name="Message"
+                placeholder="* How can we help you"
+                cols="40"
+                rows="11"
+              ></textarea>
+            </div>
+            <div></div>
+
+            <div class="submit">
+              <button
+                type="submit"
+                style="--bg-color: var(--wine-color)"
+                class="primary-button"
+              >
+                SEND REQUEST
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="company-foot">
@@ -151,4 +226,8 @@
       <div class="foot">© Copyright <b>Tech-lot</b> 2023</div>
     </footer>
   </body>
+  <script src="../scripts/header.js"></script>
+  <script src="..//scripts/contact.js"></script>
+  <script src="..//scripts/footer.js"></script>
+  <script src="./script.js"></script>
 </html>
