@@ -212,7 +212,7 @@ label {
 /* select end */
 
 /* search input and button */
-form {
+form.search {
   background-color: #fff;
   border: 1px solid var(--black-color);
   border-radius: 10px;
