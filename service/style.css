@@ -129,12 +129,20 @@
 
 @media (max-width: 650px) {
   .sub-services {
+    width: 100vw;
     display: flex;
+    justify-content: flex-start;
+    grid-gap: 15px;
     gap: 15px;
+    overflow: hidden;
+    align-items: center;
+    padding: 1rem;
+    overflow-x: scroll;
     flex-wrap: nowrap;
   }
 
   .serv {
     min-width: 300px;
+    display: grid;
   }
 }
