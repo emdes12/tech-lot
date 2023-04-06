@@ -84,6 +84,7 @@ button.primary-button img {
     var(--wine-color),
     var(--blue-dark-color)
   );
+  text-align: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
