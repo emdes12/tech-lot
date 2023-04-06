@@ -31,6 +31,7 @@
 
 .main-cta h5 {
   font-size: 20px;
+  font-weight: 400;
   line-height: 28px;
   max-width: 900px;
   width: 100%;
@@ -44,4 +45,84 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.service-list {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-list h1 {
+  font-size: 25px;
+}
+
+.service-list p {
+  margin: 10px 0 30px;
+  font-weight: 300px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.sub-services {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.serv {
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(202, 202, 202);
+}
+
+.serv-img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.serv-img img {
+  object-fit: cover;
+  height: 200px;
+  object-position: center;
+  transition: transform ease 1s;
+}
+
+.serv:hover .serv-img img {
+  transform: scale(1.2);
+}
+
+.serv-details {
+  padding: 15px;
+}
+
+.serv-view-type {
+  color: #b7b7b7;
+  font-weight: 500;
+}
+
+.serv-details h4 {
+  color: var(--wine-color);
+  margin-top: 5px;
+  font-variant: small-caps;
+  font-size: 22px;
+}
+
+.serv-link {
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  margin-top: 20px;
+  font-weight: 500;
+  transition: all ease-in-out 1s;
+  color: var(--blue-dark-color);
+}
+
+.serv-link:hover {
+  color: var(--wine-color);
 }

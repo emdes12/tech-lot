@@ -237,3 +237,13 @@ form.search {
 form.search {
   width: 300px;
 }
+
+@media (max-width: 650px) {
+  .dspfl {
+    flex-direction: column-reverse;
+  }
+
+  .bg-image form {
+    grid-template-columns: 1fr;
+  }
+}
