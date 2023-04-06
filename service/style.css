@@ -126,3 +126,15 @@
 .serv-link:hover {
   color: var(--wine-color);
 }
+
+@media (max-width: 650px) {
+  .sub-services {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap;
+  }
+
+  .serv {
+    min-width: 300px;
+  }
+}
