@@ -3,3 +3,7 @@
 @import url(../styles/components/footer.css);
 @import url(../styles/components/header.css);
 @import url(../styles/components/contact.css);
+
+li {
+  cursor: pointer;
+}
