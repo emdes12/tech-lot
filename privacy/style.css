@@ -111,6 +111,10 @@ article {
 }
 
 @media (max-width: 650px) {
+  main {
+    grid-template-rows: 100px 1fr;
+  }
+
   section {
     display: none;
   }
