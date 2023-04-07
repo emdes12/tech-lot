@@ -156,6 +156,10 @@ nav,
   .mb-tab-none {
     display: none;
   }
+
+  .mobile-menu-icon {
+    display: block;
+  }
 }
 
 @media (max-width: 650px) {
@@ -165,10 +169,6 @@ nav,
 
   .mb-none {
     display: none;
-  }
-
-  .mobile-menu-icon {
-    display: block;
   }
 
   .logo img {
