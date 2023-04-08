@@ -99,3 +99,59 @@ section > h1 {
 .board.open {
   display: block;
 }
+
+/* teams styling */
+.board-head {
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background-color: rgb(5, 188, 5);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  font-weight: 500;
+}
+
+/* tables */
+table {
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+  display: grid;
+  padding: 10px 0;
+  grid-template-columns: 50px 100px 1fr 0.8fr 150px 1.3fr 100px;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #aaa;
+}
+
+tr img {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+}
