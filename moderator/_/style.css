@@ -76,6 +76,7 @@ a > .nav-list > img {
 
 section {
   margin: 60px 40px 0;
+  overflow: scroll;
 }
 
 section h1 {
