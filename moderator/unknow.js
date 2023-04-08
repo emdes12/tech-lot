@@ -11,8 +11,17 @@ window.addEventListener("keyup", (event) => {
 });
 
 // forget me
-const forPas = document.getElementsByClassName(".forget-password");
+const forPas = document.getElementById("forget-password");
 
 forPas.addEventListener("click", () => {
   alert("Chat me for your TikTok passcode");
+});
+
+// the authentication board
+const loginForm = document.querySelector(".login-form");
+
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("form submitted");
+  window.location.href = "./_";
 });
