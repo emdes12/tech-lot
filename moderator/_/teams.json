@@ -1,0 +1,74 @@
+{
+  "team_members": [
+    {
+      "name": "John Smith",
+      "post": "CEO",
+      "location": "San Francisco, CA",
+      "linkedin_url": "https://www.linkedin.com/in/johnsmith",
+      "image_url": "https://example.com/images/john_smith.jpg"
+    },
+    {
+      "name": "Jane Doe",
+      "post": "COO",
+      "location": "New York, NY",
+      "linkedin_url": "https://www.linkedin.com/in/janedoe",
+      "image_url": "https://example.com/images/jane_doe.jpg"
+    },
+    {
+      "name": "Bob Johnson",
+      "post": "CTO",
+      "location": "Seattle, WA",
+      "linkedin_url": "https://www.linkedin.com/in/bobjohnson",
+      "image_url": "https://example.com/images/bob_johnson.jpg"
+    },
+    {
+      "name": "Samantha Lee",
+      "post": "Marketing Manager",
+      "location": "Chicago, IL",
+      "linkedin_url": "https://www.linkedin.com/in/samanthalee",
+      "image_url": "https://example.com/images/samantha_lee.jpg"
+    },
+    {
+      "name": "Mark Thompson",
+      "post": "Software Developer",
+      "location": "Boston, MA",
+      "linkedin_url": "https://www.linkedin.com/in/markthompson",
+      "image_url": "https://example.com/images/mark_thompson.jpg"
+    },
+    {
+      "name": "Rachel Chen",
+      "post": "Graphic Designer",
+      "location": "Los Angeles, CA",
+      "linkedin_url": "https://www.linkedin.com/in/rachelchen",
+      "image_url": "https://example.com/images/rachel_chen.jpg"
+    },
+    {
+      "name": "David Kim",
+      "post": "Customer Service Representative",
+      "location": "Houston, TX",
+      "linkedin_url": "https://www.linkedin.com/in/davidkim",
+      "image_url": "https://example.com/images/david_kim.jpg"
+    },
+    {
+      "name": "Sarah Johnson",
+      "post": "Sales Manager",
+      "location": "Atlanta, GA",
+      "linkedin_url": "https://www.linkedin.com/in/sarahjohnson",
+      "image_url": "https://example.com/images/sarah_johnson.jpg"
+    },
+    {
+      "name": "Andrew Garcia",
+      "post": "Data Analyst",
+      "location": "Miami, FL",
+      "linkedin_url": "https://www.linkedin.com/in/andrewgarcia",
+      "image_url": "https://example.com/images/andrew_garcia.jpg"
+    },
+    {
+      "name": "Emily Lee",
+      "post": "Content Writer",
+      "location": "San Diego, CA",
+      "linkedin_url": "https://www.linkedin.com/in/emilylee",
+      "image_url": "https://example.com/images/emily_lee.jpg"
+    }
+  ]
+}
