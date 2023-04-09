@@ -1,0 +1,9 @@
+<input onchange="conLog()" type="file" id="picture" />
+<script>
+  const picture = document.querySelector("#picture");
+
+  function conLog() {
+    console.log(picture.files[0]);
+    console.log(picture.files[0].type);
+  }
+</script>

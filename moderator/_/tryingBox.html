@@ -1,0 +1,115 @@
+<script type="module">
+  // trying again
+  // retry
+  // new function
+
+  // import "firebase/storage";
+  import { getDatabase, ref as dbRef, push } from "firebase/database";
+
+  const storage = firebase.storage();
+
+  async function uploadTeamMemberDetails(
+    name,
+    post,
+    location,
+    linkedinUrl,
+    file
+  ) {
+    // Get a reference to the Firebase Storage and Realtime Database
+    const storage = getStorage();
+    const database = getDatabase();
+
+    // Generate a unique ID for the new team member
+    const newTeamMemberId = push(dbRef(database, "teamMembers")).key;
+
+    // Upload the picture file to the "teamMembers" folder in Firebase Storage
+    const pictureRef = storageRef(
+      storage,
+      `teamMembers/${newTeamMemberId}.jpg`
+    );
+    await uploadBytes(pictureRef, file);
+
+    // Get the download URL of the uploaded picture
+    const pictureUrl = await getDownloadURL(pictureRef);
+
+    // Create a new team member object
+    const newTeamMember = {
+      name: name,
+      post: post,
+      location: location,
+      linkedinUrl: linkedinUrl,
+      pictureUrl: pictureUrl,
+    };
+
+    // Set the new team member object in the "teamMembers" node in the database
+    await set(dbRef(database, `teamMembers/${newTeamMemberId}`), newTeamMember);
+
+    // Return the new team member's ID
+    return newTeamMemberId;
+  }
+
+  async function addTeamMember() {
+    // const picture = document.getElementById("picture").file[0];
+    const picture = document.getElementById("picture").files[0];
+    const name = document.getElementById("name").value;
+    const post = document.getElementById("post").value;
+    const location = document.getElementById("location").value;
+    const linkedin = document.getElementById("linkedin").value;
+
+    await uploadTeamMemberDetails(name, post, location, linkedin, picture);
+  }
+</script>
+// err //err errr werw
+
+<script>
+  // const pictureName = picture.name;
+
+  // firebase storage reference
+  // it is the path where image will be stored
+
+  let storageReference = storageRef("team-images/" + name.value);
+  // upload pictures to selected storage reference
+  // const metadata = { contentType: file.type };
+  // const uploadTask = fileRef.put(file, metadata);
+  const uploadTask = storageReference.put(picture);
+  // to get the state of image uploading.......
+  uploadTask.on(
+    "state_changed",
+    function (snapshot) {
+      // get taskprogress by following code
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log("upload is " + progress + " done");
+    },
+    function (error) {
+      // handle error here
+      console.log(error.message);
+    },
+    function () {
+      // handle successful upload
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+        // get your image download url here and upload it to database
+        // our path where data is stored ...
+        databaseRef("teamMembers/")
+          .push()
+          .set(
+            {
+              name: name.value,
+              post: post.value,
+              location: location.value,
+              linkedin_url: linkedin.value,
+              image_url: downloadURL,
+            },
+            function (error) {
+              if (error) {
+                alert("Error while uploading");
+              } else {
+                alert("successfully uploaded");
+                // reset form
+                document.getElementById("add-form").reset();
+              }
+            }
+          );
+      });
+    }
+  );
+</script>

@@ -60,7 +60,10 @@
           <div class="board open" id="teams">
             <div class="board-head">
               <h3>TEAM MEMBER LIST</h3>
-              <button onclick="toggleOpenForm()">ADD</button>
+              <div class="head-btns">
+                <button onclick="toggleAddForm()">ADD</button>
+                <button class="red" onclick="toggleRemoveForm()">REMOVE</button>
+              </div>
             </div>
             <div class="team-listing">
               <table>
@@ -71,7 +74,6 @@
                   <th>Post</th>
                   <th>Location</th>
                   <th>LinkedIn Url</th>
-                  <th>remove</th>
                 </tr>
                 <tbody id="list-team"></tbody>
               </table>
@@ -81,7 +83,7 @@
               </div>
             </div>
 
-            <div class="add-team-form-board">
+            <div class="form-board add-team">
               <form action="#" id="add-form">
                 <label for="picture">
                   <span id="image">Click here to add Picture</span>
@@ -99,11 +101,31 @@
                   >Location:<input type="text" id="location"
                 /></label>
                 <label for="linkedin"
-                  >LinkedIn Url:<input type="text" id="linkedin"
+                  >LinkedIn Url:<input type="url" id="linkedin"
                 /></label>
                 <div class="btn-bottom">
-                  <button onclick="addTeamMember()">Add Member</button>
-                  <button onclick="toggleOpenForm()" class="red">Cancel</button>
+                  <button id="add-member">Add Member</button>
+                  <button onclick="toggleAddForm()" class="red">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="form-board rem-team">
+              <form action="#" id="rem-form">
+                <p>
+                  Kindly input the name of The Team Member you want to remove.
+                </p>
+                <span>e.g <b>Alawiye Muriala</b></span>
+                <p>NOTE: type it as shown in on the Team Page</p>
+                <label for="remove-name"
+                  >Name:<input type="text" id="remove-name"
+                /></label>
+
+                <div class="btn-bottom">
+                  <button id="rem-member">Remove</button>
+                  <button onclick="toggleRemoveForm()" class="red">
+                    Cancel
+                  </button>
                 </div>
               </form>
             </div>
@@ -121,9 +143,12 @@
       </section>
     </main>
   </body>
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js "></script> -->
   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -142,7 +167,170 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    let teamAPI = "";
+
+    import {
+      getDatabase,
+      ref as databaseRef,
+      set,
+      get,
+      child,
+      update,
+      remove,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+    import {
+      getStorage,
+      ref as storageReff,
+      deleteObject,
+      uploadBytes,
+      getDownloadURL,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+    const database = getDatabase();
+
+    // references
+    const picture = document.querySelector("#picture");
+    const name = document.getElementById("name");
+    const post = document.getElementById("post");
+    const location = document.getElementById("location");
+    const linkedin = document.getElementById("linkedin");
+
+    function addTeamMember() {
+      // Create a storage reference
+      const storage = getStorage();
+      const storageRef = storageReff(
+        storage,
+        "path/TeamPicture/" + name.value + ".jpg"
+      );
+      const metadata = {
+        contentType: picture.files[0].type,
+      };
+
+      // Upload the file to Firebase Storage
+      uploadBytes(storageRef, picture.files[0], metadata)
+        .then((snapshot) => {
+          console.log("File uploaded successfully");
+
+          // Get the download URL
+          getDownloadURL(snapshot.ref)
+            .then((downloadURL) => {
+              console.log("Download URL:", downloadURL);
+
+              set(databaseRef(database, "TeamMember/" + name.value), {
+                name: name.value,
+                post: post.value,
+                location: location.value,
+                linkedin_url: linkedin.value,
+                image_url: downloadURL,
+              })
+                .then(() => {
+                  alert("team Created Successfully");
+                  toggleAddForm();
+                  document.querySelector("#add-form").reset();
+                  getTeamMember();
+                })
+                .catch((err) => {
+                  alert("unsuccessful, error" + err);
+                });
+            })
+            .catch((error) => {
+              console.error("Error getting download URL:", error);
+            });
+        })
+        .catch((error) => {
+          console.error("Error uploading file:", error);
+        });
+      // set(ref(database, "tea"));
+    }
+
+    // assign event to submit btb
+    document
+      .getElementById("add-member")
+      .addEventListener("click", addTeamMember);
+    // ======================= Endss of Adding Team ==============================//
+
+    // ======= asign remove to btn
+    document.querySelector("#rem-member").addEventListener("click", () => {
+      let isConfirm = confirm("Are you sure you want to delete");
+      if (isConfirm) {
+        remTeamMember();
+      }
+    });
+
+    // ====== display Team after calling =======
+    function fetchDemoTeamData() {
+      teamAPI.forEach((tm, index) => {
+        teamBoard.innerHTML += `
+                    <tr>
+                      <td>${index + 1}.</td>
+                      <td><img src="${tm.image_url}" alt="Picture" /></td>
+                      <td>${tm.name}</td>
+                      <td>${tm.post}</td>
+                      <td>${tm.location}</td>
+                      <td>${tm.linkedin_url}</td>
+                    </tr>
+      `;
+      });
+      setTimeout(() => {
+        document.getElementById("none").style.display = "none";
+      }, 2000);
+    }
+    // ========================= Begining of getting Team Members ================================ //
+
+    function getTeamMember() {
+      const teamBoard = document.getElementById("list-team");
+      const database = getDatabase();
+      const dataRef = databaseRef(database, "TeamMember/");
+
+      get(dataRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            let teamAPIs = snapshot.val();
+            teamBoard.innerHTML = "";
+            teamAPI = [];
+            for (let teamMember in teamAPIs) {
+              console.log(teamMember);
+              let tm = teamAPIs[teamMember];
+              console.log(teamAPIs[teamMember].name);
+              teamAPI.push(tm);
+            }
+            fetchDemoTeamData();
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    getTeamMember();
+
+    // ========== deleting from database ============
+
+    function remTeamMember() {
+      // Get a reference to the database
+      const database = getDatabase();
+
+      // Define the member key to be deleted
+      const memberId = document.querySelector("#remove-name").value;
+
+      // alert(memberId);
+      // Create a reference to the member node to be deleted
+      const memberRef = databaseRef(database, `TeamMember/` + memberId);
+
+      // Remove the member from the database
+      remove(memberRef)
+        .then(() => {
+          alert("Member deleted successfully!");
+          getTeamMember();
+          toggleRemoveForm();
+          deocument.querySelector("#rem-form").reset();
+        })
+        .catch((error) => {
+          alert("Error deleting member:", error);
+        });
+    }
   </script>
-  <script src="./file.js"></script>
 </html>
+
+<script src="./file.js"></script>
