@@ -104,76 +104,24 @@ const toggleOpenForm = () => {
 // add new Member
 function addTeamMember() {
   // const picture = document.getElementById("picture").file[0];
-  const picture = document.getElementById("picture").files[0];
+  const picture = blobImageUrl;
   const name = document.getElementById("name").value;
   const post = document.getElementById("post").value;
   const location = document.getElementById("location").value;
   const linkedin = document.getElementById("linkedin").value;
 
-  // get image name
-  const pictureName = picture.name;
+  const newMember = {
+    name: name.value,
+    post: post.value,
+    location: location.value,
+    linkedin_url: linkedin.value,
+    image_url: picture,
+  };
 
-  // firebase storage reference
-  // it is the path where image will be stored
+  teamAPI.push(newMember);
 
-  let storageRef = firebase.storage().ref("team-images/" + pictureName);
-  // upload pictures to selected storage reference
-  const uploadTask = storageRef.put("picture");
-  // to get the state of image uploading.......
-  uploadTask.on(
-    "state_changed",
-    function (snapshot) {
-      // get taskprogress by following code
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log("upload is " + progress + " done");
-    },
-    function (error) {
-      // handle error here
-      console.log(error.message);
-    },
-    function () {
-      // handle successful upload
-      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-        // get your image download url here and upload it to database
-        // our path where data is stored ...
-        firebase
-          .database()
-          .ref("teamMembers/")
-          .push()
-          .set(
-            {
-              name: name.value,
-              post: post.value,
-              location: location.value,
-              linkedin_url: linkedin.value,
-              image_url: downloadURL,
-            },
-            function (error) {
-              if (error) {
-                alert("Error while uploading");
-              } else {
-                alert("successfully uploaded");
-                // reset form
-                document.getElementById("add-form").reset();
-              }
-            }
-          );
-      });
-    }
-  );
-
-  // const newMember = {
-  //   name: name.value,
-  //   post: post.value,
-  //   location: location.value,
-  //   linkedin_url: linkedin.value,
-  //   image_url: picture,
-  // };
-
-  // teamAPI.push(newMember);
-
-  // caller();
-  // toggleOpenForm();
+  caller();
+  toggleOpenForm();
 
   // reset form
   blobImageUrl = "";
