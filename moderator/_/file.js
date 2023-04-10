@@ -96,7 +96,11 @@ const loadImage = function (event) {
 
 // open and close form
 const addTeamFormBoard = document.querySelector(".add-team");
+const addFaqFormBoard = document.querySelector(".add-faq");
 const remTeamFormBoard = document.querySelector(".rem-team");
+const remFaqFormBoard = document.querySelector(".rem-faq");
+
+// ============ toggle add/remove team member forms ==================
 
 const toggleAddForm = () => {
   addTeamFormBoard.classList.toggle("open");
@@ -104,6 +108,16 @@ const toggleAddForm = () => {
 
 const toggleRemoveForm = () => {
   remTeamFormBoard.classList.toggle("open");
+};
+
+// ============ toggle add/remove Faq forms ==================
+
+const toggleFaqAddForm = () => {
+  addFaqFormBoard.classList.toggle("open");
+};
+
+const toggleFaqRemoveForm = () => {
+  remFaqFormBoard.classList.toggle("open");
 };
 
 // add new Member

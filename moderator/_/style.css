@@ -266,3 +266,49 @@ label span img {
   grid-template-rows: 1fr;
   height: 90px;
 }
+
+/* ======= faq styling =========== */
+
+.faqs {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+}
+
+.faq {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.281);
+  color: #000;
+  border-radius: 10px;
+  min-height: 70px;
+}
+
+.faq p {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+}
+
+.faq:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.faq:hover p {
+  white-space: normal;
+}
+
+#faq-ans {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  grid-template-columns: 1fr;
+}
+
+li {
+  list-style-type: none;
+}

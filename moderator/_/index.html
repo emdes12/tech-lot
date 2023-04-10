@@ -130,12 +130,168 @@
               </form>
             </div>
           </div>
+
           <div class="board" id="services">
             <h1>SERVICES</h1>
           </div>
+
           <div class="board" id="faqs">
-            <h1>FAQs</h1>
+            <div class="board-head">
+              <h3>LIST of FAQs</h3>
+              <div class="head-btns">
+                <button onclick="toggleFaqAddForm()">ADD</button>
+                <button class="red" onclick="toggleFaqRemoveForm()">
+                  REMOVE
+                </button>
+              </div>
+            </div>
+
+            <div class="team-listing">
+              <ul class="faqs">
+                <li class="faq">
+                  <h3>What services does Tech-lot provide?</h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot provides a range of technology
+                    solutions including software development, IT consulting,
+                    cloud computing, cybersecurity, data analytics, and more.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>How experienced is Tech-lot's team of experts?</h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot's team of experts has extensive
+                    experience in their respective fields and many hold advanced
+                    degrees in computer science, information technology, and
+                    related fields.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    How can Tech-lot help improve my company's technology
+                    infrastructure?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot can assess your company's current
+                    technology infrastructure and develop customized solutions
+                    that can help improve efficiency, reduce costs, and increase
+                    security.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    What is the process for working with Tech-lot on a
+                    technology project?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> The process for working with Tech-lot
+                    typically involves an initial consultation to assess your
+                    needs, followed by a proposal outlining the scope of the
+                    project, timeline, and costs. Once approved, the project is
+                    developed and delivered according to the agreed-upon terms.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    Does Tech-lot provide ongoing maintenance and support
+                    services?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> Yes, Tech-lot provides ongoing maintenance
+                    and support services to ensure that your technology systems
+                    remain up-to-date and secure.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    How does Tech-lot ensure the security of my company's data
+                    and technology systems?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot follows industry-standard best
+                    practices for data security and employs the latest security
+                    technologies to ensure the safety of your data and
+                    technology systems.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>Can Tech-lot help with software development projects?</h3>
+                  <p>
+                    <b>Answer:</b> Yes, Tech-lot provides full-stack software
+                    development services and can develop customized solutions
+                    for clients with unique needs.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>What industries does Tech-lot specialize in serving?</h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot specializes in serving a range of
+                    industries including healthcare, finance, education,
+                    government, and more.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    How does Tech-lot stay up-to-date on the latest technology
+                    trends and advancements?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> Tech-lot's team members participate in
+                    ongoing training and professional development programs to
+                    stay up-to-date on the latest technology trends and
+                    advancements.
+                  </p>
+                </li>
+                <li class="faq">
+                  <h3>
+                    Does Tech-lot offer customized solutions for clients with
+                    unique technology needs?
+                  </h3>
+                  <p>
+                    <b>Answer:</b> Yes, Tech-lot specializes in providing
+                    customized technology solutions tailored to the unique needs
+                    of each client.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="form-board add-faq">
+              <form action="#" id="add-faq-form">
+                <label for="faq-question"
+                  >Question:<input type="text" id="faq-question"
+                /></label>
+                <label id="faq-ans" for="faq-answer">
+                  Answer:
+                  <textarea id="faq-answer" cols="30" rows="10"></textarea>
+                </label>
+                <div class="btn-bottom">
+                  <button id="add-question">Add Question</button>
+                  <button onclick="toggleFaqAddForm()" class="red">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="form-board rem-faq">
+              <form action="#" id="rem-faq-form">
+                <p>Kindly input the qeustion you want to remove.</p>
+                <span>e.g <b>How Are You?</b></span>
+                <p>NOTE: type it as shown in on the Faq Page</p>
+                <label for="remove-question"
+                  >Question:<input type="text" id="remove-question"
+                /></label>
+
+                <div class="btn-bottom">
+                  <button id="rem-question">Remove</button>
+                  <button onclick="toggleFaqRemoveForm()" class="red">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
+
           <div class="board" id="request-form">
             <h1>REQUEST/COMPLAINT FORM</h1>
           </div>
@@ -168,6 +324,7 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     let teamAPI = "";
+    let faqAPI = "";
 
     import {
       getDatabase,
@@ -188,14 +345,16 @@
     } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
     const database = getDatabase();
 
-    // references
-    const picture = document.querySelector("#picture");
-    const name = document.getElementById("name");
-    const post = document.getElementById("post");
-    const location = document.getElementById("location");
-    const linkedin = document.getElementById("linkedin");
+    // ======================== add team member function ===============================
 
     function addTeamMember() {
+      // references
+      const picture = document.querySelector("#picture");
+      const name = document.getElementById("name");
+      const post = document.getElementById("post");
+      const location = document.getElementById("location");
+      const linkedin = document.getElementById("linkedin");
+
       // Create a storage reference
       const storage = getStorage();
       const storageRef = storageReff(
@@ -249,11 +408,48 @@
       .addEventListener("click", addTeamMember);
     // ======================= Endss of Adding Team ==============================//
 
-    // ======= asign remove to btn
+    // ======= asign remove to btn ========================
     document.querySelector("#rem-member").addEventListener("click", () => {
-      let isConfirm = confirm("Are you sure you want to delete");
+      let isConfirm = confirm("Are you sure you want to delete?");
       if (isConfirm) {
         remTeamMember();
+      }
+    });
+
+    // ======================== add team member function ===============================
+
+    function addFaqQuestion() {
+      alert("add faq btn clicked");
+      // references
+      const question = document.getElementById("faq-question");
+      const answer = document.getElementById("faq-answer");
+
+      set(databaseRef(database, "FaqQuestion/" + question.value), {
+        question: question.value,
+        answer: answer.value,
+      })
+        .then(() => {
+          alert("Faq added Successfully");
+          toggleFaqAddForm();
+          document.querySelector("#add-faq-form").reset();
+          getFaqQuestion();
+        })
+        .catch((err) => {
+          alert("unsuccessful, error" + err);
+        });
+    }
+
+    // assign event to submit btb
+    document
+      .getElementById("add-question")
+      .addEventListener("click", addFaqQuestion);
+    // ======================= Endss of Adding Team ==============================//
+
+    // ======= asign remove to btn
+    document.querySelector("#rem-question").addEventListener("click", () => {
+      let isConfirm = confirm("Are you sure you want to delete");
+      if (isConfirm) {
+        remFaqQuestion();
       }
     });
 
@@ -275,6 +471,22 @@
         document.getElementById("none").style.display = "none";
       }, 2000);
     }
+
+    // ====== display Faq after calling =======
+    function fetchDemoFaq() {
+      const faqBoard = document.querySelector(".faqs");
+      faqAPI.forEach((tm, index) => {
+        faqBoard.innerHTML += `
+                <li class="faq">
+                  <h3>${tm.question}</h3>
+                  <p>
+                    <b>Answer:</b> ${tm.answer}
+                  </p>
+                </li>
+      `;
+      });
+    }
+
     // ========================= Begining of getting Team Members ================================ //
 
     function getTeamMember() {
@@ -289,9 +501,9 @@
             teamBoard.innerHTML = "";
             teamAPI = [];
             for (let teamMember in teamAPIs) {
-              console.log(teamMember);
+              // console.log(teamMember);
               let tm = teamAPIs[teamMember];
-              console.log(teamAPIs[teamMember].name);
+              // console.log(teamAPIs[teamMember].name);
               teamAPI.push(tm);
             }
             fetchDemoTeamData();
@@ -305,7 +517,36 @@
     }
     getTeamMember();
 
-    // ========== deleting from database ============
+    // ========================= Begining of getting FAQs from database ================================ //
+
+    function getFaqQuestion() {
+      const faqBoard = document.querySelector(".faqs");
+      const database = getDatabase();
+      const dataRef = databaseRef(database, "FaqQuestion/");
+
+      get(dataRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            let faqAPIs = snapshot.val();
+            faqBoard.innerHTML = "";
+            faqAPI = [];
+            for (let faqQuestion in faqAPIs) {
+              // console.log(faqQuestion);
+              let tm = faqAPIs[faqQuestion];
+              faqAPI.push(tm);
+            }
+            fetchDemoFaq();
+          } else {
+            alert("No Faq available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    getFaqQuestion();
+
+    // ========== deleting from database ============remFaqQuestion
 
     function remTeamMember() {
       // Get a reference to the database
@@ -328,6 +569,32 @@
         })
         .catch((error) => {
           alert("Error deleting member:", error);
+        });
+    }
+
+    // ========== deleting FAQ ============
+
+    function remFaqQuestion() {
+      // Get a reference to the database
+      const database = getDatabase();
+
+      // Define the member key to be deleted
+      const memberId = document.querySelector("#remove-question").value;
+
+      // alert(memberId);
+      // Create a reference to the member node to be deleted
+      const memberRef = databaseRef(database, `FaqQuestion/` + memberId);
+
+      // Remove the member from the database
+      remove(memberRef)
+        .then(() => {
+          alert("Question deteled successfully!");
+          getFaqQuestion();
+          toggleFaqRemoveForm();
+          deocument.querySelector("#rem-faq-form").reset();
+        })
+        .catch((error) => {
+          alert("Error deleting Faq:", error);
         });
     }
   </script>
