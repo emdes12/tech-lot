@@ -243,9 +243,87 @@
         </div>
       </div>
 
-      <div class="foot">© Copyright <b>Tech-lot</b> 2023</div>
+      <div class="foot">© Copyright <b>Tech-lot</b> <span class="copyright-year">2022</span> </div>
     </footer>
   </body>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBM8krsrITMACO0twpCEJLzRoGhVsw-S_g",
+      authDomain: "tech-lot.firebaseapp.com",
+      databaseURL: "https://tech-lot-default-rtdb.firebaseio.com",
+      projectId: "tech-lot",
+      storageBucket: "tech-lot.appspot.com",
+      messagingSenderId: "572043058764",
+      appId: "1:572043058764:web:52b9264ee8d7edf9e4dee9",
+      measurementId: "G-KR7P391F1T",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    let faqAPI = "";
+
+    import {
+      getDatabase,
+      ref as databaseRef,
+      set,
+      get,
+      child,
+      update,
+      remove,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+    const database = getDatabase();
+    const faqBoard = document.querySelector(".faqs");
+
+    // ====== display Team after calling =======
+    function fetchDemoFaq() {
+      faqAPI.forEach((tm, index) => {
+        faqBoard.innerHTML += `
+                <li class="faq">
+                  <h3>${tm.question}</h3>
+                  <p>
+                    <b>Answer:</b> ${tm.answer}
+                  </p>
+                </li>
+      `;
+      });
+    }
+
+    // ========================= Begining of getting Team Members ================================ //
+
+    function getFaqQuestion() {
+      const faqBoard = document.querySelector(".faqs");
+      const database = getDatabase();
+      const dataRef = databaseRef(database, "FaqQuestion/");
+
+      get(dataRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            let faqAPIs = snapshot.val();
+            faqAPI = [];
+            for (let faqQuestion in faqAPIs) {
+              // console.log(faqQuestion);
+              let tm = faqAPIs[faqQuestion];
+              faqAPI.push(tm);
+            }
+            fetchDemoFaq();
+          } else {
+            alert("No Faq available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    getFaqQuestion();
+  </script>
   <script src="../scripts/header.js"></script>
   <script src="..//scripts/contact.js"></script>
   <script src="..//scripts/footer.js"></script>
