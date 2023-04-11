@@ -130,9 +130,9 @@
           <h1>Get in Touch with us</h1>
           <p>where you will find the same quaility of service and dedication</p>
 
-          <form action="https://formspree.io/f/xoqzqlrl" method="post">
+          <form action="#" id="request-form">
             <div class="custom-select">
-              <select name="services">
+              <select name="Request Services" id="request-services">
                 <option value="">* Select Services</option>
                 <option value="Technology Soloutions">
                   Technology Solutions
@@ -140,16 +140,18 @@
                 <option value="Embedded Expertise">Embedded Expertise</option>
                 <option value="Corporate Training">Corporate Training</option>
                 <option value="Client Experience">Client Experience</option>
-                <option value="">ATM Service</option>
+                <option value="ATM Service">ATM Service</option>
+                <option value="Feedback/Review">Feedback/Review</option>
+                <option value="Complaint">Complaint</option>
               </select>
             </div>
 
             <div class="float-container">
               <input
                 type="text"
-                name="name"
+                name="Customer Name"
                 required
-                id="name"
+                id="customer-name"
                 placeholder="Your Name Here"
               />
             </div>
@@ -158,8 +160,8 @@
               <div class="float-container">
                 <input
                   type="number"
-                  name="Phone Number"
-                  id="phone"
+                  name="Customer Phone Number"
+                  id="customer-phone-number"
                   required
                   placeholder="* Phone Number"
                 />
@@ -168,8 +170,8 @@
               <div class="float-container">
                 <input
                   type="email"
-                  name="Email"
-                  id="email"
+                  name="Customer Email"
+                  id="customer-email"
                   placeholder="* Email Address:"
                   required
                 />
@@ -178,7 +180,8 @@
               <div class="float-container">
                 <input
                   type="text"
-                  name="company"
+                  id="customer-company-name"
+                  name="Customer Company Name"
                   placeholder="Your Company Name: (ignore if it individual)"
                   required
                 />
@@ -187,8 +190,9 @@
 
             <div class="float-container">
               <textarea
-                name="Message"
-                placeholder="* How can we help you"
+                name="Customer Message"
+                id="customer-message"
+                placeholder="* How can we help you?"
                 cols="40"
                 rows="11"
               ></textarea>
@@ -197,7 +201,7 @@
 
             <div class="submit">
               <button
-                type="submit"
+                id="submit-request-form"
                 style="--bg-color: var(--wine-color)"
                 class="primary-button"
               >
@@ -323,6 +327,121 @@
         });
     }
     getFaqQuestion();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBM8krsrITMACO0twpCEJLzRoGhVsw-S_g",
+      authDomain: "tech-lot.firebaseapp.com",
+      databaseURL: "https://tech-lot-default-rtdb.firebaseio.com",
+      projectId: "tech-lot",
+      storageBucket: "tech-lot.appspot.com",
+      messagingSenderId: "572043058764",
+      appId: "1:572043058764:web:52b9264ee8d7edf9e4dee9",
+      measurementId: "G-KR7P391F1T",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import {
+      getDatabase,
+      ref as databaseRef,
+      set,
+      get,
+      child,
+      update,
+      remove,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+    const database = getDatabase();
+
+    // ===================Random ID generator ======================//
+    function genID() {
+      //data
+      const small = "abcdefghijklmnopqrstuvwxyz";
+      const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const numbers = "1234567890";
+      let pass = [];
+
+      for (let i = 0; i < 20; i++) {
+        let charStore;
+        let randomIndex = Math.floor(Math.random() * 3);
+
+        if (randomIndex === 0) {
+          charStore = small;
+        }
+
+        if (randomIndex === 1) {
+          charStore = upper;
+        }
+
+        if (randomIndex === 2) {
+          charStore = numbers;
+        }
+
+        let randomChar = Math.floor(Math.random() * charStore.length);
+
+        pass += charStore[randomChar];
+      }
+      return pass;
+    }
+
+    // ======================== add team member function ===============================
+
+    function submitRequestForm() {
+      alert("form submitting");
+      // form action="https://formspree.io/f/xoqzqlrl"
+      // references
+      const uniqueID = genID();
+      console.log(uniqueID);
+      const requestService = document.getElementById("request-services");
+      const customerName = document.getElementById("customer-name");
+      const customerPhoneNumber = document.getElementById(
+        "customer-phone-number"
+      );
+      const customerEmail = document.getElementById("customer-email");
+      const customerCompanyName = document.getElementById(
+        "customer-company-name"
+      );
+      const customerMessage = document.getElementById("customer-message");
+
+      set(databaseRef(database, "RequestForm/" + uniqueID), {
+        id: uniqueID,
+        requestService: requestService.value,
+        customerName: customerName.value,
+        customerPhoneNumber: customerPhoneNumber.value,
+        customerEmail: customerEmail.value,
+        customerCompanyName: customerCompanyName.value,
+        customerMessage: customerMessage.value,
+      })
+        .then(() => {
+          alert("Message Sent Successfully");
+          document.querySelector("#request-form").reset();
+        })
+        .catch((err) => {
+          alert("unsuccessful, error" + err);
+        });
+    }
+
+    // document
+    //   .querySelector("#request-form")
+    //   .setAttribute("action", "https://formspree.io/f/xoqzqlrl");
+    // assign event to submit btb
+    document
+      .getElementById("submit-request-form")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        submitRequestForm();
+      });
+    // ======================= Endss of Adding Team ==============================//
   </script>
   <script src="../scripts/header.js"></script>
   <script src="..//scripts/contact.js"></script>

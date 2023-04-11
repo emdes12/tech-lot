@@ -4,7 +4,9 @@ const boardBtn = document.querySelectorAll(".nav-list");
 boardBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     let btnParentLink = btn.parentElement.getAttribute("href").slice(1);
+    // btn.parentElement.addEventListener("click", (e) => e.preventDefault());
 
+    document.title = btnParentLink + " | Control Board";
     const selectedBoardArea = document.getElementById(btnParentLink);
 
     const allBoardArea = document.querySelectorAll(".board");
@@ -12,7 +14,7 @@ boardBtn.forEach((btn) => {
     allBoardArea.forEach((board) => {
       board.classList.remove("open");
       selectedBoardArea.classList.add("open");
-      console.log(board);
+      // console.log(board);
     });
 
     // console.log(boardArea);
