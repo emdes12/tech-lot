@@ -365,7 +365,7 @@ button {
 .contact {
   width: 100%;
   content: "";
-  background-image: url("/images/wave.jpg");
+  background-image: url("/images/wave.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

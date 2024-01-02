@@ -9,7 +9,7 @@ function addTeamMember() {
   const storage = getStorage();
   const storageRef = storageReff(
     storage,
-    "path/TeamPicture/" + name.value + ".jpg"
+    "path/TeamPicture/" + name.value + ".webp"
   );
   const metadata = {
     contentType: picture.files[0].type,

@@ -10,7 +10,7 @@
   max-width: 2000px;
   width: 100%;
   padding: 200px 80px 100px;
-  background-image: url(../images/codioful-formerly-gradienta-bKESVqfxass-unsplash.jpg);
+  background-image: url(../images/codioful-formerly-gradienta-bKESVqfxass-unsplash.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -120,7 +120,7 @@
   align-items: center;
   justify-content: start;
   flex-direction: row-reverse;
-  /* background-image: url(../images/aron-visuals-bZZp1PmHI0E-unsplash.jpg); */
+  /* background-image: url(../images/aron-visuals-bZZp1PmHI0E-unsplash.webp); */
   transition: transform ease 1s;
   background-image: linear-gradient(
     92deg,
@@ -135,7 +135,7 @@
 }
 
 .vision {
-  background-image: url(../images/nasa-Q1p7bh3SHj8-unsplash.jpg);
+  background-image: url(../images/nasa-Q1p7bh3SHj8-unsplash.webp);
   flex-direction: row;
   justify-content: end;
 }
